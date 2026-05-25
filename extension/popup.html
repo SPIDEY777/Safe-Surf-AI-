@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeSurf AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="cyber-container">
+    <header>
+      <div class="logo-container">
+        <img src="assets/icon.png" alt="SafeSurf AI" class="logo">
+        <span class="brand-text">SAFESURF <span class="ai-text">AI</span></span>
+      </div>
+      <div class="status-badge" id="scan-status-badge">READY</div>
+    </header>
+
+    <main>
+      <div class="scan-section" id="initial-view">
+        <div class="url-display">
+          <p class="label">CURRENT SITE</p>
+          <div class="url-box" id="current-url">Detecting...</div>
+        </div>
+        
+        <button id="scan-btn" class="cyber-button">
+          <span class="btn-text">INITIALIZE SCAN</span>
+          <div class="btn-glitch"></div>
+        </button>
+      </div>
+
+      <div class="loading-section hidden" id="loading-view">
+        <div class="cyber-loader">
+          <div class="loader-ring"></div>
+          <div class="loader-text">ANALYZING...</div>
+        </div>
+      </div>
+
+      <div class="results-section hidden" id="results-view">
+        <div class="score-card">
+          <div class="score-circle">
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" id="score-path" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <div class="score-text">
+              <span id="threat-score">0</span>
+              <span class="percent">%</span>
+            </div>
+          </div>
+          <div class="risk-info">
+            <p class="risk-label">THREAT LEVEL</p>
+            <h2 id="risk-level">SAFE</h2>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <p class="info-label">AI EXPLANATION</p>
+            <p class="info-content" id="analysis-explanation">Loading analysis...</p>
+          </div>
+          
+          <!-- Infrastructure Section -->
+          <div class="info-item infra-item hidden" id="infra-view">
+            <p class="info-label">INFRASTRUCTURE INTELLIGENCE</p>
+            <div class="infra-grid">
+              <div class="infra-data">
+                <span class="d-label">IP:</span> <span id="infra-ip">-</span>
+              </div>
+              <div class="infra-data">
+                <span class="d-label">ORG:</span> <span id="infra-org">-</span>
+              </div>
+              <div class="infra-data" id="infra-indicators-row">
+                <span class="d-label">RISK:</span> <span id="infra-indicators-count" class="risk-count">0 Indicators</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <p class="info-label">RECOMMENDATION</p>
+            <p class="info-content highlight" id="analysis-recommendation">Processing data...</p>
+          </div>
+        </div>
+
+        <button id="rescan-btn" class="secondary-button">RE-SCAN SITE</button>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-grid"></div>
+      <p>SECURED BY SAFESURF NEURAL ENGINE</p>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
