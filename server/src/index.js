@@ -13,8 +13,48 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Configure CORS to support:
+// - Localhost development origins on any port
+// - Vercel subdomains (e.g., safesurf-ai.vercel.app, *.vercel.app)
+// - Chrome Extension origins (chrome-extension://*)
+// - Optional custom origins provided in env variables
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://localhost:5000',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5000'
+];
+
+if (process.env.ALLOWED_ORIGINS) {
+  process.env.ALLOWED_ORIGINS.split(',').forEach(origin => {
+    allowedOrigins.push(origin.trim());
+  });
+}
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g. mobile apps, curl, postman, direct server to server)
+    if (!origin) return callback(null, true);
+    
+    const isAllowed = allowedOrigins.includes(origin) ||
+                      origin.startsWith('http://localhost') ||
+                      origin.startsWith('http://127.0.0.1') ||
+                      origin.startsWith('chrome-extension://') ||
+                      origin.endsWith('.vercel.app');
+                      
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+};
+
 // Middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes

@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+// API_BASE is loaded globally from config.js
 
 document.addEventListener('DOMContentLoaded', async () => {
   const currentUrlElement = document.getElementById('current-url');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       displayResults(data);
     } catch (error) {
       console.error('Scan error:', error);
-      alert('Failed to connect to SafeSurf AI backend. Ensure the server is running at localhost:5000');
+      alert('Failed to connect to SafeSurf AI backend. Ensure the server is online.');
       loadingView.classList.add('hidden');
       initialView.classList.remove('hidden');
     }

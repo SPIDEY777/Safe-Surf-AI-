@@ -1,5 +1,5 @@
 // SafeSurf AI Background Service Worker
-const API_BASE = 'http://localhost:5000/api';
+importScripts('config.js');
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   // Only trigger when the page has finished loading
