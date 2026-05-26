@@ -73,7 +73,14 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Internal Server Error', message: err.message });
 });
-
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    service: 'SafeSurf AI Backend',
+    status: 'running',
+    version: '1.0'
+  });
+});
 app.listen(PORT, async () => {
   console.log(`🚀 SafeSurf AI Backend running on port ${PORT}`);
   
