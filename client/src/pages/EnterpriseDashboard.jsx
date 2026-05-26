@@ -37,6 +37,7 @@ import {
   Cell
 } from 'recharts';
 import Navbar from '../components/layout/Navbar';
+import { API_BASE_URL } from '../config/api';
 
 const EnterpriseDashboard = () => {
   const [timeframe, setTimeframe] = useState('7d'); // '24h' | '7d' | '30d'
@@ -70,7 +71,7 @@ const EnterpriseDashboard = () => {
   const fetchTelemetry = async (showRefreshIndicator = false) => {
     if (showRefreshIndicator) setIsRefreshing(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/telemetry/dashboard?timeframe=${timeframe}`);
+      const response = await fetch(`${API_BASE_URL}/api/telemetry/dashboard?timeframe=${timeframe}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
