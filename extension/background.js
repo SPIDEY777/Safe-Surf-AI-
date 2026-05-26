@@ -1,5 +1,5 @@
 // SafeSurf AI Background Service Worker
-importScripts('config.js');
+const API_BASE = 'https://safe-surf-ai.onrender.com/api';
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   // Only trigger when the page has finished loading

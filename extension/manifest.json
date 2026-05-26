@@ -33,7 +33,6 @@
     "128": "assets/icon.png"
   },
   "host_permissions": [
-    "http://localhost:5000/*",
     "https://safe-surf-ai.onrender.com/*"
   ]
 }

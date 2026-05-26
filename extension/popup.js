@@ -1,4 +1,4 @@
-// API_BASE is loaded globally from config.js
+const API_BASE = 'https://safe-surf-ai.onrender.com/api';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const currentUrlElement = document.getElementById('current-url');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       displayResults(data);
     } catch (error) {
       console.error('Scan error:', error);
-      alert('Failed to connect to SafeSurf AI backend. Ensure the server is online.');
+      alert('Failed to connect to SafeSurf AI backend. Ensure the server is running at https://safe-surf-ai.onrender.com');
       loadingView.classList.add('hidden');
       initialView.classList.remove('hidden');
     }
